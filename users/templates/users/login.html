@@ -1,0 +1,49 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block content %}
+  <div class="row h-100">
+    <div class ="col-md-4"></div>
+    <div class="col-md-4 my-auto">
+      <div class="col-md-1"></div>
+      <div class="card mx-auto auth col-md-11">
+        <article class="card-body">
+          <h1 class="card-title text-center mb-4 mt-1"><i class="fab fa-servicestack"></i></h1>
+          <hr>
+          <h4 class="text-info text-center mb-4">Sign In</h4>
+          <form method="POST">
+          {% csrf_token %}
+          {% if error %}
+                <div class="alert alert-danger">
+                  <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                    <i class="tim-icons icon-simple-remove"></i>
+                  </button>
+                  <span> {{error}} </span>
+                </div>
+            {% endif %}
+            <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+              </div>
+              <input name="username" class="form-control" placeholder="Username" type="text">
+            </div> <!-- input-group.// -->
+            </div> <!-- form-group// -->
+            <div class="form-group">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                  <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+              </div>
+                <input name="password" class="form-control" placeholder="******" type="password">
+            </div> <!-- input-group.// -->
+            </div> <!-- form-group// -->
+            <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block"> Login  </button>
+            </div> <!-- form-group// -->
+            <p class="text-center"><a href="{% url 'password_reset' %}" class="btn btn-sm">Forgot password?</a></p>
+            <p class="text-center"><a href="{% url 'register' %}" class="btn btn-sm">Need an account ? Register</a></p>
+          </form>
+        </article>        
+      </div>
+    </div>
+  </div>
+{% endblock %}

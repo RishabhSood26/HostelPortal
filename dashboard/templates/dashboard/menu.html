@@ -1,0 +1,318 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+{% block content %}
+  <div class="wrapper">
+    <div class="sidebar" data="blue">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red"
+    -->
+      <div class="sidebar-wrapper">
+        <div class="logo">
+          <a href="javascript:void(0)" class="simple-text logo-mini">
+            <i class="fas fa-user"></i>
+          </a>
+          <a href="javascript:void(0)" class="simple-text logo-normal">
+            Rishabh Sood
+          </a>
+        </div>
+        <ul class="nav">
+          <li>
+            <a href="{% url 'dashboard-home' %}">
+              <i class="tim-icons icon-single-02"></i>
+              <p>My Profile</p>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="tim-icons icon-bell-55"></i>
+              <p>Notifications</p>
+            </a>
+          </li>
+          <li class="active">
+            <a href="{% url 'dashboard-menu' %}">
+              <i class="fas fa-utensils"></i>
+              <p>Mess Menu</p>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'dashboard-canteen' %}">
+              <i class="fas fa-moon"></i>
+              <p>Night Canteen</p>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'dashboard-clean' %}">
+              <i class="fas fa-broom"></i>
+              <p>Room Cleaning</p>
+            </a>
+          </li>
+          <li>
+            <a href="{% url 'dashboard-laundry' %}">
+              <i class="fas fa-tshirt"></i>
+              <p>Laundry</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel" data="blue">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-absolute navbar-transparent">
+        <div class="container-fluid">
+          <div class="navbar-wrapper">
+            <div class="navbar-toggle d-inline">
+              <button type="button" class="navbar-toggler">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </button>
+            </div>
+            <a class="navbar-brand" href="javascript:void(0)"><i class="fab fa-servicestack" style="margin-right: 10px; font-size: 2rem;"></i>Hostel Portal</a>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+            <span class="navbar-toggler-bar navbar-kebab"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navigation">
+            <ul class="navbar-nav ml-auto">
+              <li class="search-bar input-group">
+                <button class="btn btn-link" id="search-button" data-toggle="modal" data-target="#searchModal"><i class="tim-icons icon-zoom-split" ></i>
+                  <span class="d-lg-none d-md-block">Search</span>
+                </button>
+              </li>
+              <li class="dropdown nav-item">
+                <a href="javascript:void(0)" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                  <div class="notification d-none d-lg-block d-xl-block"></div>
+                  <i class="tim-icons icon-sound-wave"></i>
+                  <p class="d-lg-none">
+                    Notifications
+                  </p>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
+                  <li class="nav-link"><a href="#" class="nav-item dropdown-item">Mike John responded to your email</a></li>
+                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">You have 5 more tasks</a></li>
+                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Your friend Michael is in town</a></li>
+                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another notification</a></li>
+                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Another one</a></li>
+                </ul>
+              </li>
+              <li class="dropdown nav-item">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                  <div class="photo">
+                    <img src="{% static 'dashboard/img/anime3.png' %}" alt="Profile Photo">
+                  </div>
+                  <b class="caret d-none d-lg-block d-xl-block"></b>
+                  <p class="d-lg-none">
+                    Log out
+                  </p>
+                </a>
+                <ul class="dropdown-menu dropdown-navbar">
+                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Profile</a></li>
+                  <li class="nav-link"><a href="javascript:void(0)" class="nav-item dropdown-item">Settings</a></li>
+                  <li class="dropdown-divider"></li>
+                  <li class="nav-link"><a href="{% url 'logout' %}" class="nav-item dropdown-item">Log out</a></li>
+                </ul>
+              </li>
+              <li class="separator d-lg-none"></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="modal modal-search fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="SEARCH">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <i class="tim-icons icon-simple-remove"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Navbar -->
+      <div class="content">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card ">
+              <div class="card-header">
+                <h3 class="card-title"><i class="fas fa-utensils"></i> <b>Mess Menu</b> <i class="fas fa-utensils"></i></h3>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table tablesorter " id="">
+                    <thead class=" text-primary">
+                      <tr>
+                        <th class="text-center">
+                          Monday
+                        </th>
+                        <th class="text-center">
+                          Tuesday
+                        </th>
+                        <th class="text-center">
+                          Wednesday
+                        </th>
+                        <th class="text-center">
+                          Thursday
+                        </th>
+                        <th class="text-center">
+                          Friday
+                        </th>
+                        <th class="text-center">
+                          Saturday
+                        </th>
+                        <th class="text-center">
+                          Sunday
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-center">
+                          <i>Breakfast <br> 8:00 AM - 10:00 AM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Breakfast <br> 8:00 AM - 10:00 AM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Breakfast <br> 8:00 AM - 10:00 AM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Breakfast <br> 8:00 AM - 10:00 AM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Breakfast <br> 8:00 AM - 10:00 AM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Breakfast <br> 9:00 AM - 10:00 AM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Breakfast <br> 9:00 AM - 10:00 AM</i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">
+                          {{breakfast.monday}}
+                        </td>
+                        <td class="text-center">
+                          {{breakfast.tuesday}}
+                        </td>
+                        <td class="text-center">
+                          {{breakfast.wednesday}}
+                        </td>
+                        <td class="text-center">
+                          {{breakfast.thursday}}
+                        </td>
+                        <td class="text-center">
+                          {{breakfast.friday}}
+                        </td>
+                        <td class="text-center">
+                          {{breakfast.saturday}}
+                        </td>
+                        <td class="text-center">
+                          {{breakfast.sunday}}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">
+                          <i>Lunch <br> 12:00 PM - 2:00 PM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Lunch <br> 12:00 PM - 2:00 PM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Lunch <br> 12:00 PM - 2:00 PM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Lunch <br> 12:00 PM - 2:00 PM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Lunch <br> 12:00 PM - 2:00 PM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Lunch <br> 1:00 PM - 2:00 PM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Lunch <br> 1:00 PM - 2:00 PM</i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">
+                          {{lunch.monday}}
+                        </td>
+                        <td class="text-center">
+                          {{lunch.tuesday}}
+                        </td>
+                        <td class="text-center">
+                          {{lunch.wednesday}}
+                        </td>
+                        <td class="text-center">
+                          {{lunch.thursday}}
+                        </td>
+                        <td class="text-center">
+                          {{lunch.friday}}
+                        </td>
+                        <td class="text-center">
+                          {{lunch.saturday}}
+                        </td>
+                        <td class="text-center">
+                          {{lunch.sunday}}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">
+                          <i>Dinner <br> 8:00 PM - 9:00 PM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Dinner <br> 8:00 PM - 9:00 PM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Dinner <br> 8:00 PM - 9:00 PM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Dinner <br> 8:00 PM - 9:00 PM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Dinner <br> 8:00 PM - 9:00 PM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Dinner <br> 8:00 PM - 9:00 PM</i>
+                        </td>
+                        <td class="text-center">
+                          <i>Dinner <br> 8:00 PM - 9:00 PM</i>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">
+                          {{dinner.monday}}
+                        </td>
+                        <td class="text-center">
+                          {{dinner.tuesday}}
+                        </td>
+                        <td class="text-center">
+                          {{dinner.wednesday}}
+                        </td>
+                        <td class="text-center">
+                          {{dinner.thursday}}
+                        </td>
+                        <td class="text-center">
+                          {{dinner.friday}}
+                        </td>
+                        <td class="text-center">
+                          {{dinner.saturday}}
+                        </td>
+                        <td class="text-center">
+                          {{dinner.sunday}}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

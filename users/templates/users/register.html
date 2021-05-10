@@ -1,0 +1,114 @@
+{% extends "users/base.html" %}
+{% load static %}
+{% block content %}
+
+  <div class="row h-100">
+    <div class ="col-md-4"></div>
+    <div class="col-md-4 my-auto">
+      <div class="col-md-1"></div>
+      <div class="card mx-auto auth col-md-11">
+        <article class="card-body mx-auto">
+            <h1 class="card-title text-center mb-4 mt-1"><i class="fab fa-servicestack"></i></h1>
+            <hr>
+            <h4 class="text-info text-center mb-4">Register</h4>
+            <form method="POST">
+            {% csrf_token %}
+            {% if error %}
+                <div class="alert alert-danger">
+                  <button type="button" aria-hidden="true" class="close" data-dismiss="alert" aria-label="Close">
+                    <i class="tim-icons icon-simple-remove"></i>
+                  </button>
+                  <span> {{error}} </span>
+                </div>
+            {% endif %}
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                </div>
+                <input name="username" class="form-control" placeholder="username" type="text">
+            </div> <!-- form-group// -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                        </div>
+                        <input name="first_name" class="form-control" placeholder="First name" type="text">
+                    </div> <!-- form-group// -->
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group input-group">
+                        <input name="last_name" class="form-control" placeholder="Last name" type="text">
+                    </div> <!-- form-group// -->
+                </div>
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-key"></i> </span>
+                </div>
+                <input name="rollno" class="form-control" placeholder="Roll No." type="number">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                </div>
+                <input name="email" class="form-control" placeholder="Email Id" type="email">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-home"></i> </span>
+                </div>
+                <select class="custom-select" style="max-width: 30%;" name = "block">
+                    <option selected="">A</option>
+                    <option value="1">B</option>
+                    <option value="2">C</option>
+                    <option value="3">D</option>
+                </select>
+                <input name="roomno" class="form-control" placeholder="Room No." type="number">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
+                </div>
+                <input name="phone" class="form-control" placeholder="+CCXXXXXXXXXX" type="text">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-calendar"></i> </span>
+                </div>
+                <input name="dob" id="dob" class="form-control" placeholder="Date Of Birth" type="date">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input name="password1" class="form-control" placeholder="Password" type="password">
+            </div> <!-- form-group// -->
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input name="password2" class="form-control" placeholder="Repeat password" type="password">
+            </div> <!-- form-group// -->                                       
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block"> Sign Up </button>
+            </div> <!-- form-group// -->      
+            <p class="text-center">Have an account? <a href="{% url 'login' %}">Log In</a> </p>                                                                 
+        </form>
+        </article>
+    </div>
+</div>
+</div>
+
+<script>
+    var today = new Date();
+    var dd = 31;
+    var mm = 12; 
+    var yyyy = today.getFullYear() - 15;
+    var yyyo = today.getFullYear() - 30;
+    today = yyyy+'-'+mm+'-'+dd;
+    document.getElementById("dob").setAttribute("max", today); 
+    today = yyyo+'-'+mm+'-'+dd;
+    document.getElementById("dob").setAttribute("min", today); 
+</script>
+{% endblock %}
